@@ -4,7 +4,7 @@ import { PrimaryColumn, Entity, Column } from 'typeorm'
 class Livros{
 
   @PrimaryColumn()
-  id: string
+  id?: string
 
   @Column()
   titulo: string

@@ -2,6 +2,7 @@ import { ICreateLivrosDTO } from "../dtos/ICreateLivrosDTO";
 
 import { inject, injectable } from 'tsyringe'
 import { ILivrosRepository } from "../repositories/interfaces/ILivrosRepository";
+import { Livros } from "../entities/Livros";
 
 
 @injectable()
@@ -12,7 +13,7 @@ class CreateLivrosUseCase{
     private livrosRepository: ILivrosRepository
   ){}
 
-  async execute({ id, titulo, foto, editora, autores }: ICreateLivrosDTO): Promise<void>{
+  async execute({ id, titulo, foto, editora, autores }: ICreateLivrosDTO): Promise<Livros>{
 
     const VerifyIfLivroAlreadyExist = this.livrosRepository.findLivroByTitulo(titulo)
 
@@ -20,7 +21,7 @@ class CreateLivrosUseCase{
       throw new Error("O Livro já existe, verifique novamente seu titulo!")
     }
 
-    this.livrosRepository.create({
+    const livro = this.livrosRepository.create({
       id,
       titulo,
       foto,
@@ -28,8 +29,7 @@ class CreateLivrosUseCase{
       autores
     })
 
-
-
+    return livro
   }
 
 

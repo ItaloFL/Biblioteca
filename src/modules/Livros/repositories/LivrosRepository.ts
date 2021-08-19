@@ -12,7 +12,7 @@ export class LivrosRepository implements ILivrosRepository{
     this.repository = getRepository(Livros)
   }
   
-  async create({ id, titulo, foto, editora, autores }: ICreateLivrosDTO): Promise<void> {
+  async create({ id, titulo, foto, editora, autores }: ICreateLivrosDTO): Promise<Livros> {
     
     const livros = this.repository.create({
       id,
@@ -23,6 +23,8 @@ export class LivrosRepository implements ILivrosRepository{
     })
 
     this.repository.save(livros)
+
+    return livros
     
   }
 
