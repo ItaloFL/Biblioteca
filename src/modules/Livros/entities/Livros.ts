@@ -1,4 +1,5 @@
 import { PrimaryColumn, Entity, Column } from 'typeorm'
+import { v4 as uuid } from 'uuid'
 
 @Entity()
 class Livros{
@@ -16,8 +17,14 @@ class Livros{
   foto: string
 
   @Column()
-  autores: string 
+  autores: string
 
+  constructor(){
+    if(!this.id){
+      this.id = uuid()
+    }
+  }
 }
+
 
 export { Livros }

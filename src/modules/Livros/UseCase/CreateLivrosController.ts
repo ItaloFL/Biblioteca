@@ -18,7 +18,7 @@ class CreateLivrosController{
       autores
     })
 
-    return response.json(livro)
+    return livro
   }
 
 

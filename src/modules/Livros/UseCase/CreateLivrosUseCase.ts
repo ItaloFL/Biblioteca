@@ -15,7 +15,7 @@ class CreateLivrosUseCase{
 
   async execute({ id, titulo, foto, editora, autores }: ICreateLivrosDTO): Promise<Livros>{
 
-    const VerifyIfLivroAlreadyExist = this.livrosRepository.findLivroByTitulo(titulo)
+    const VerifyIfLivroAlreadyExist = await this.livrosRepository.findLivroByTitulo(titulo)
 
     if(VerifyIfLivroAlreadyExist){
       throw new Error("O Livro já existe, verifique novamente seu titulo!")

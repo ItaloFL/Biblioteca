@@ -3,7 +3,7 @@
 export interface ICreateLivrosDTO{
   id?: string
 
-  titulo: string
+  titulo?: string
   
   editora: string
 

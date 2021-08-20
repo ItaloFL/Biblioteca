@@ -12,17 +12,18 @@ export class LivrosRepository implements ILivrosRepository{
     this.repository = getRepository(Livros)
   }
   
-  async create({ id, titulo, foto, editora, autores }: ICreateLivrosDTO): Promise<Livros> {
+  async create({ titulo, foto, editora, autores }: ICreateLivrosDTO): Promise<Livros> {
     
     const livros = this.repository.create({
-      id,
-      titulo,
       foto,
+      titulo,
       editora,
       autores
     })
 
-    this.repository.save(livros)
+    console.log(livros)
+
+    await this.repository.save(livros)
 
     return livros
     
@@ -30,7 +31,7 @@ export class LivrosRepository implements ILivrosRepository{
 
   async findLivroByTitulo(titulo: string): Promise<Livros> {
     
-    const livro = this.repository.findOne({
+    const livro = await this.repository.findOne({
       titulo
     })
 
