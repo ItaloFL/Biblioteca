@@ -1,7 +1,11 @@
 import express from 'express'
 import 'reflect-metadata'
 import { livrosRoutes } from './routes/livros.routes'
+import { createConnection } from 'typeorm'
+import './shared'
 
+
+createConnection()
 
 const app = express()
 

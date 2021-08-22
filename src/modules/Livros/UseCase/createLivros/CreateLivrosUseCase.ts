@@ -1,12 +1,15 @@
-import { ICreateLivrosDTO } from "../dtos/ICreateLivrosDTO";
+
 
 import { inject, injectable } from 'tsyringe'
-import { ILivrosRepository } from "../repositories/interfaces/ILivrosRepository";
-import { Livros } from "../entities/Livros";
+import { ICreateLivrosDTO } from '../../dtos/ICreateLivrosDTO'
+import { Livros } from '../../entities/Livros'
+import { ILivrosRepository } from '../../repositories/interfaces/ILivrosRepository'
+
+
 
 
 @injectable()
-class CreateLivrosUseCase{
+export class CreateLivrosUseCase{
 
   constructor(
     @inject("LivrosRepository")
@@ -21,7 +24,7 @@ class CreateLivrosUseCase{
       throw new Error("O Livro já existe, verifique novamente seu titulo!")
     }
 
-    const livro = this.livrosRepository.create({
+    const livro = await this.livrosRepository.create({
       id,
       titulo,
       foto,
@@ -34,5 +37,3 @@ class CreateLivrosUseCase{
 
 
 }
-
-export { CreateLivrosUseCase }

@@ -1,11 +1,10 @@
 import { Request, Response } from "express";
 import { container } from "tsyringe";
-import { Livros } from "../entities/Livros";
 import { CreateLivrosUseCase } from "./CreateLivrosUseCase";
 
 class CreateLivrosController{
 
-  async handle(request: Request, response: Response): Promise<Livros>{
+  async handle(request: Request, response: Response): Promise<Response>{
 
     const { titulo, editora, foto, autores } = request.body    
 
@@ -18,7 +17,7 @@ class CreateLivrosController{
       autores
     })
 
-    return livro
+    return response.status(201).json(livro)
   }
 
 

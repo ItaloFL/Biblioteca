@@ -1,7 +1,7 @@
 import { PrimaryColumn, Entity, Column } from 'typeorm'
 import { v4 as uuid } from 'uuid'
 
-@Entity()
+@Entity("createLivros")
 class Livros{
 
   @PrimaryColumn()

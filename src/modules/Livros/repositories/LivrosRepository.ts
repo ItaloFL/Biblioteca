@@ -39,6 +39,9 @@ export class LivrosRepository implements ILivrosRepository{
   
   }
 
-
+  async list(): Promise<Livros[]> {
+    return await this.repository.find()
+  }
+  
 
 }
