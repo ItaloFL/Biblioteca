@@ -1,4 +1,4 @@
-import { getRepository, Repository } from 'typeorm'
+import { getRepository, Repository, UpdateResult } from 'typeorm'
 import { idText } from 'typescript'
 import { ICreateLivrosDTO } from '../dtos/ICreateLivrosDTO'
 import { Livros } from '../entities/Livros'
@@ -12,6 +12,7 @@ export class LivrosRepository implements ILivrosRepository{
   constructor(){
     this.repository = getRepository(Livros)
   }
+  
  
   async create({ titulo, foto, editora, autores }: ICreateLivrosDTO): Promise<Livros> {
     
@@ -42,25 +43,26 @@ export class LivrosRepository implements ILivrosRepository{
     return await this.repository.find()
   }
 
-  async update({ autores, editora, foto, titulo }: ICreateLivrosDTO, id: string ): Promise<Livros> {
+  async update(data: ICreateLivrosDTO): Promise<Livros> {
     
-    const livros = this.repository.create({
-      id: id,
-      foto,
-      titulo,
-      editora,
-      autores
-    })
+    let livro = await this.repository.findOne(String(data.id))
 
-    await this.repository.save(livros)
+    livro = {...livro, ...data}
+    
+    await this.repository.save(livro)
 
-    return livros
+    return livro
   }
   
   async findByID(id: string): Promise<Livros> {
     return await this.repository.findOne(id)
   }
   
-  
+  async delete(id: string): Promise<void> {
+
+    const livro = await this.repository.findOne(id)
+    
+    await this.repository.delete(livro)
+  }
 
 }

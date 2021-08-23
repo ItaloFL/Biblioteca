@@ -10,18 +10,12 @@ export class AlterLivrosController{
   async handle(request: Request, response: Response): Promise<Response>{
 
     const { id } = request.headers
-    const { titulo, foto, editora, autores } = request.body
+    const { data } = request.body
   
     const alterLivrosUseCase = container.resolve(AlterLivrosUseCase)
 
-    const alter = alterLivrosUseCase.execute({
-      id,
-      titulo,
-      foto,
-      editora,
-      autores
-    })
+    const alter = await alterLivrosUseCase.execute(data, id)
 
-    return response.status(204).json(alter)
+    return response.status(200).json(alter)
   }
 }

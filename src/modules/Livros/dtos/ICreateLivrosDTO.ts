@@ -1,7 +1,7 @@
 
 
 export interface ICreateLivrosDTO{
-  id?: string | string[]
+  id?: string
 
   titulo?: string
   

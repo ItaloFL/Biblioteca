@@ -8,10 +8,12 @@ export class DeleteLivrosController{
 
   async handle(request: Request, response: Response): Promise<Response>{
 
+    const { id } = request.headers
+
     const deleteLivrosUseCase = container.resolve(DeleteLivrosUseCase)
 
-    await deleteLivrosUseCase.execute()
+    await deleteLivrosUseCase.execute(id)
 
-    return response.send()
+    return response.status(204).send()
   }
 }

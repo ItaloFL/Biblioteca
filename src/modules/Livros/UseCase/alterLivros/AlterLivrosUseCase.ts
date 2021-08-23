@@ -11,7 +11,7 @@ export class AlterLivrosUseCase{
     private livrosRepository: ILivrosRepository
   ){}
 
-  async execute({ id, titulo, foto, editora, autores }: ICreateLivrosDTO): Promise<void>{
+  async execute( data: ICreateLivrosDTO, id: string | string[]): Promise<void>{
 
     const verifyIfLivroAlreadyExist = await this.livrosRepository.findByID(id)
 
@@ -19,13 +19,7 @@ export class AlterLivrosUseCase{
       throw new Error("Livro não encontrado, verifique os dados e tente novamente!")
     }
 
-    await this.livrosRepository.create({
-      id: verifyIfLivroAlreadyExist.id,
-      autores,
-      editora,
-      foto, 
-      titulo
-    })
+    await this.livrosRepository.update(data)
     
   }
 }
