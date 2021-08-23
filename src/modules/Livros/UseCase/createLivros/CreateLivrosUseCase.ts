@@ -16,7 +16,7 @@ export class CreateLivrosUseCase{
     private livrosRepository: ILivrosRepository
   ){}
 
-  async execute({ id, titulo, foto, editora, autores }: ICreateLivrosDTO): Promise<Livros>{
+  async execute({ titulo, foto, editora, autores }: ICreateLivrosDTO): Promise<void>{
 
     const VerifyIfLivroAlreadyExist = await this.livrosRepository.findLivroByTitulo(titulo)
 
@@ -25,14 +25,11 @@ export class CreateLivrosUseCase{
     }
 
     const livro = await this.livrosRepository.create({
-      id,
       titulo,
       foto,
       editora,
       autores
     })
-
-    return livro
   }
 
 
