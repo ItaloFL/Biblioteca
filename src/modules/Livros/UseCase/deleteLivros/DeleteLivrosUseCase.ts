@@ -1,4 +1,5 @@
 import { inject, injectable } from "tsyringe";
+import { AppError } from "../../../../shared/errors/AppError";
 import { ILivrosRepository } from "../../repositories/interfaces/ILivrosRepository";
 
 
@@ -15,7 +16,7 @@ export class DeleteLivrosUseCase{
     const verifyIfLivroExist = await this.livrosRepository.findByID(id)
 
     if(!verifyIfLivroExist){
-      throw new Error("Livro não encontrado, verifique os dados e tente novamente!")
+      throw new AppError("Livro não encontrado, verifique os dados e tente novamente!")
     }
 
     await this.livrosRepository.delete(id)

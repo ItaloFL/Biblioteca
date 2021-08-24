@@ -9,6 +9,11 @@
 - [Building](#-building)
 - [Developers](#-developers)
 
+
+# 📒 Documentation
+
+A documentação desse projeto, foi feita com o swagger, mostra todas as rotas, sinta-se a vontade para testa-las e entender melhor a api. 😉, para entrar nela, lembre-se de estar rodando a aplicação em sua maquina, com o comando "yarn dev", clique no link: [Documentation](http://localhost:3333/api-docs/)
+
 ---
 
 # 🏆 About the project

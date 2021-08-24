@@ -1,4 +1,5 @@
 import { inject, injectable } from "tsyringe";
+import { AppError } from "../../../../shared/errors/AppError";
 import { ICreateLivrosDTO } from "../../dtos/ICreateLivrosDTO";
 import { ILivrosRepository } from "../../repositories/interfaces/ILivrosRepository";
 
@@ -16,7 +17,7 @@ export class AlterLivrosUseCase{
     const verifyIfLivroAlreadyExist = await this.livrosRepository.findByID(id)
 
     if(!verifyIfLivroAlreadyExist){
-      throw new Error("Livro não encontrado, verifique os dados e tente novamente!")
+      throw new AppError("Livro não encontrado, verifique os dados e tente novamente!")
     }
 
     await this.livrosRepository.update(data)
