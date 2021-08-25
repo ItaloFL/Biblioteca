@@ -42,24 +42,30 @@ export class LivrosRepository implements ILivrosRepository{
     return await this.repository.find()
   }
 
-  async update(data: ICreateLivrosDTO): Promise<Livros> {
+  async update( data: ICreateLivrosDTO): Promise<Livros> {
     
-    let livro = await this.repository.findOne(String(data.id))
+    let livro = await this.repository.findOne(data.id)
 
     livro = {...livro, ...data}
     
-    await this.repository.save(livro)
+    const savedLivro = await this.repository.save(livro)
 
-    return livro
+    return savedLivro
   }
   
   async findByID(id: string): Promise<Livros> {
-    return await this.repository.findOne(id)
+    const idd = await this.repository.findOne(id)
+
+    console.log(idd)
+
+    return idd
   }
   
   async delete(id: string): Promise<void> {
 
     const livro = await this.repository.findOne(id)
+
+    console.log(livro)
     
     await this.repository.delete(livro)
   }

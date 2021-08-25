@@ -106,16 +106,78 @@
         }
       }
     },
-    "/obras/id":{
+    "/obras/{id}":{
       "put":{
         "tags": ["Obras"],
         "summary": "Altera informações de uma obra especifica",
-        "description": "Altera uma obra especifica"
+        "description": "Altera uma obra especifica",
+        "requestBody":{
+          "content": {
+            "application/json":{
+              "schema":{
+                "type": "object",
+                "properties": {
+                  "titulo":{
+                    "type": "string"
+                  },
+                  "foto":{
+                    "type": "string"
+                  },
+                  "editora":{
+                    "type": "string"
+                  },
+                  "autores":{
+                    "type": "string"
+                  }
+                },
+                "example":{
+                  "titulo": "Harry Potter",
+                  "foto": "https://i.imgur.com/UH3IPXw.jpg",
+                  "editora": "Rocco",
+                  "autores":[
+                    "JK Rowlling",
+                    "Italo Ferreira"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id da obra",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Obra alterada com sucesso!"
+          },
+          "400": {
+            "description": "Livro não encontrado, verifique os dados e tente novamente!"
+          }
+        }
       },
       "delete":{
         "tags": ["Obras"],
         "summary": "Deleta uma obra especifica",
-        "description": "Deletar uma obra espeficia"
+        "description": "Deletar uma obra espeficia",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id da obra",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204":{
+            "description": "Obra deletada com sucesso"
+          }
+        }
+
 
       }
       

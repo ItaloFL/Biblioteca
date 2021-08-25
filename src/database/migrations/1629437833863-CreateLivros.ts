@@ -27,7 +27,6 @@ export class CreateLivros1629437833863 implements MigrationInterface {
                     {
                         name: "autores",
                         type: "varchar",
-                        isArray: true
                     }
                 ]
             })

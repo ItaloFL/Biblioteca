@@ -14,6 +14,12 @@
 
 A documentação desse projeto, foi feita com o swagger, mostra todas as rotas, sinta-se a vontade para testa-las e entender melhor a api. 😉, para entrar nela, lembre-se de estar rodando a aplicação em sua maquina, com o comando "yarn dev", clique no link: [Documentation](http://localhost:3333/api-docs/)
 
+
+<h1 align='center'>
+  <img src='https://cdn.discordapp.com/attachments/779427449875595265/880207977267728474/unknown.png'>
+</h1>
+
+
 ---
 
 # 🏆 About the project
