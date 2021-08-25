@@ -1,4 +1,3 @@
-import { UpdateResult } from "typeorm";
 import { ICreateLivrosDTO } from "../../dtos/ICreateLivrosDTO";
 import { Livros } from "../../entities/Livros";
 

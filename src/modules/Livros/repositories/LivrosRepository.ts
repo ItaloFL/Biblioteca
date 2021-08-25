@@ -1,5 +1,4 @@
-import { getRepository, Repository, UpdateResult } from 'typeorm'
-import { idText } from 'typescript'
+import { getRepository, Repository } from 'typeorm'
 import { ICreateLivrosDTO } from '../dtos/ICreateLivrosDTO'
 import { Livros } from '../entities/Livros'
 import { ILivrosRepository } from '../repositories/interfaces/ILivrosRepository'

@@ -1,14 +1,14 @@
-import express, { NextFunction, Request, Response } from 'express'
-import 'express-async-errors'
 
 import 'reflect-metadata'
+import { AppError } from './shared/errors/AppError'
+import express, { NextFunction, Request, Response } from 'express'
+import 'express-async-errors'
 import { livrosRoutes } from './routes/livros.routes'
 import { createConnection } from 'typeorm'
 import './shared'
 import swaggerUi from 'swagger-ui-express'
 
 import swaggerDocs from './swagger.json'
-import { AppError } from './shared/errors/AppError'
 
 
 createConnection()
@@ -17,9 +17,11 @@ const app = express()
 
 app.use(express.json())
 
+app.use(livrosRoutes)
+
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs))
 
-app.use((err: Error, request: Request, response: Response, next: NextFunction) => {
+app.use((err:Error, request:Request, response:Response, next:NextFunction) => {
   if(err instanceof AppError){
     return response.status(err.statusCode).json({
       message: err.message
@@ -37,4 +39,3 @@ app.listen(3333, () => {
 })
 
 
-app.use(livrosRoutes)

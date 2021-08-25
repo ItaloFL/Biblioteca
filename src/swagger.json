@@ -36,6 +36,15 @@
                   "autores":{
                     "type": "string"
                   }
+                },
+                "example":{
+                  "titulo": "Harry Potter",
+                  "foto": "https://i.imgur.com/UH3IPXw.jpg",
+                  "editora": "Rocco",
+                  "autores":[
+                    "JK Rowlling",
+                    "Italo Ferreira"
+                  ]
                 }
               }
             }
@@ -76,6 +85,18 @@
                       "autores":{
                         "type": "string"
                       }
+                    },
+                    "example":{
+                      "value": {
+                        "titulo": "Harry Potter",
+                        "foto": "https://i.imgur.com/UH3IPXw.jpg",
+                        "editora": "Rocco",
+                        "autores":[
+                          "JK Rowlling",
+                          "Italo Ferreira"
+                        ]
+                      }
+                      
                     }
                   }
                 }
@@ -84,6 +105,20 @@
           }
         }
       }
+    },
+    "/obras/id":{
+      "put":{
+        "tags": ["Obras"],
+        "summary": "Altera informações de uma obra especifica",
+        "description": "Altera uma obra especifica"
+      },
+      "delete":{
+        "tags": ["Obras"],
+        "summary": "Deleta uma obra especifica",
+        "description": "Deletar uma obra espeficia"
+
+      }
+      
     }
   }
 
